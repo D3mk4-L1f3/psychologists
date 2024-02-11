@@ -1,10 +1,41 @@
-import { createGlobalStyle } from "styled-components";
-// import "modern-normalize/modern-normalize.css";
-// import fonts from "./fonts";
+import { createGlobalStyle } from 'styled-components';
+import fonts from './fonts';
 
-// const { light, regular, bold } = fonts;
+const { regular, medium, semiBold, bold } = fonts;
 
 export const GlobalStyles = createGlobalStyle`
+
+@font-face {
+  font-family: 'Inter';
+  src: url(${regular}) format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url(${medium}) format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url(${semiBold}) format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url(${bold}) format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
     --white: #FBFBFB;
@@ -18,7 +49,7 @@ export const GlobalStyles = createGlobalStyle`
     --green-transp: rgba(84, 190, 150, 0.2);
     --grey-transp-03: rgba(25, 26, 21, 0.3);
     --grey-transp-01: rgba(25, 26, 21, 0.1);
-    --text-grey-rgba: (25, 26, 21, 0.5);
+    --text-grey: rgba(25, 26, 21, 0.5);
 
 
  --border-transp-01: 1px solid rgba(25, 26, 21, 0.1);
@@ -27,14 +58,14 @@ export const GlobalStyles = createGlobalStyle`
 
 body {
   margin: 0;
-  /* font-family: 'Merriweather', serif; */
+  font-family:  "Inter", sans-serif;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 1.4;
+  font-size: 16px;
+  line-height: 125%;
   color: var(--gold-text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: 0.5s;
+  transition: 0.3s;
 }
 
 p,
@@ -69,12 +100,8 @@ button {
   cursor: pointer;
 }
 
-/* .ReactModal__Body--open {
-  overflow: hidden;
-} */
-
 ::-webkit-scrollbar {
-  width: 0.5px;
+  width: 0.1px;
 }
 
 ::-webkit-scrollbar {
@@ -87,7 +114,4 @@ input::-webkit-outer-spin-button,
   margin: 0;
 }
 
-/* input[type=number] {
-  -moz-appearance: textfield;
-  } */
 `;
