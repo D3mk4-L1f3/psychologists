@@ -50,6 +50,7 @@ export const GlobalStyles = createGlobalStyle`
     --grey-transp-03: rgba(25, 26, 21, 0.3);
     --grey-transp-01: rgba(25, 26, 21, 0.1);
     --text-grey: rgba(25, 26, 21, 0.5);
+    /* --hero-desc: rgba(251, 251, 251, 0.5) */
 
 
  --border-transp-01: 1px solid rgba(25, 26, 21, 0.1);
@@ -62,7 +63,7 @@ body {
   font-weight: 400;
   font-size: 16px;
   line-height: 125%;
-  color: var(--gold-text);
+  color: var(--text-grey);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: 0.3s;
