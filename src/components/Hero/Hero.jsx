@@ -9,6 +9,8 @@ import {
   HeroImgContainer,
   HeroTitle,
   HeroTitleContainer,
+  QuestionBox,
+  SocialContainer,
 } from './Hero.styled';
 
 import image from '../../styles/image/main_img.jpg';
@@ -42,6 +44,16 @@ const Hero = () => {
               <DescriptionTotal>15,000</DescriptionTotal>
             </CountDescription>
           </CountContainer>
+          <QuestionBox>
+            <svg>
+              <use href={sprite + '#question'} />
+            </svg>
+          </QuestionBox>
+          <SocialContainer>
+            <svg>
+              <use href={sprite + '#up'} />
+            </svg>
+          </SocialContainer>
         </HeroImgContainer>
       </HeroContainer>
     </Wrapper>

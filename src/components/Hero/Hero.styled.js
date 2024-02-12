@@ -95,3 +95,44 @@ export const DescriptionTotal = styled.p`
   font-size: 24px;
   color: var(--white);
 `;
+
+export const QuestionBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 185px;
+  left: -35px;
+  background: #4535af;
+  transform: rotate(-15deg);
+  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+
+  & > svg {
+    width: 23px;
+    height: 25px;
+    transform: rotate(15deg);
+  }
+`;
+
+export const SocialContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 47px;
+  right: -41px;
+  border-radius: 10px;
+  width: 48px;
+  height: 48px;
+  background: #fbc75e;
+  transform: rotate(15deg);
+
+  & > svg {
+    width: 23px;
+    height: 25px;
+    /* transform: rotate(15deg); */
+    fill: white;
+  }
+`;
