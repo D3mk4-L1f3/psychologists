@@ -1,4 +1,5 @@
 import {
+  ButtonItemContainer,
   CheckBox,
   CountContainer,
   CountDescription,
@@ -30,13 +31,21 @@ const Hero = () => {
             guide in your own life with the help of our experienced
             psychologists.
           </p>
+          <button>
+            <ButtonItemContainer>
+              <p>Get started</p>
+              <svg>
+                <use href={sprite + '#arrow-45deg'} />
+              </svg>
+            </ButtonItemContainer>
+          </button>
         </HeroTitleContainer>
         <HeroImgContainer>
           <HeroImage srcSet={`${image}`} alt="psychologist" />
           <CountContainer>
             <CheckBox>
               <svg>
-                <use href={sprite + '#check'} />
+                <use href={sprite + '#checked'} />
               </svg>
             </CheckBox>
             <CountDescription>
@@ -51,7 +60,7 @@ const Hero = () => {
           </QuestionBox>
           <SocialContainer>
             <svg>
-              <use href={sprite + '#up'} />
+              <use href={sprite + '#social'} />
             </svg>
           </SocialContainer>
         </HeroImgContainer>

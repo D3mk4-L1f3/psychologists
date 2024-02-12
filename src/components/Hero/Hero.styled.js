@@ -4,7 +4,6 @@ export const HeroContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* gap: 125px; */
 
   padding-top: 70px;
   padding-bottom: 100px;
@@ -22,6 +21,34 @@ export const HeroTitleContainer = styled.div`
     line-height: 133%;
     letter-spacing: -0.02em;
     color: var(--black);
+  }
+
+  & > button {
+    all: unset;
+    width: 135px;
+    border-radius: 30px;
+    padding: 18px 50px;
+    background: var(--green);
+  }
+`;
+
+export const ButtonItemContainer = styled.div`
+  display: flex;
+  align-items: center;
+  width: 140px;
+  justify-content: space-between;
+
+  & > p {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 120%;
+    letter-spacing: -0.01em;
+    color: var(--white);
+  }
+  & > svg {
+    width: 15px;
+    height: 15px;
+    fill: var(--white);
   }
 `;
 
@@ -71,8 +98,8 @@ export const CheckBox = styled.div`
   background: var(--white);
 
   & > svg {
-    width: 40px;
-    height: 32px;
+    width: 24px;
+    height: 20px;
     fill: var(--green);
   }
 `;
@@ -86,7 +113,6 @@ export const CountDescription = styled.div`
 
 export const DescriptionTitle = styled.p`
   font-size: 14px;
-  /* color: var(--hero-desc); */
   color: rgba(251, 251, 251, 0.5);
 `;
 
@@ -110,9 +136,10 @@ export const QuestionBox = styled.div`
   height: 40px;
 
   & > svg {
-    width: 23px;
-    height: 25px;
+    width: 16px;
+    height: 21px;
     transform: rotate(15deg);
+    fill: white;
   }
 `;
 
@@ -130,9 +157,8 @@ export const SocialContainer = styled.div`
   transform: rotate(15deg);
 
   & > svg {
-    width: 23px;
-    height: 25px;
-    /* transform: rotate(15deg); */
+    width: 17px;
+    height: 17px;
     fill: white;
   }
 `;
