@@ -1,8 +1,22 @@
 /* eslint-disable react/prop-types */
-import { AccessModalContainer } from './AccessMosdal.styled';
+import { AccessModalContainer, CloseButton } from './AccessModal.styled';
+import sprite from '../../../styles/sprite.svg';
 
-const AccessModal = ({ children }) => {
-  return <AccessModalContainer>{children}</AccessModalContainer>;
+const AccessModal = ({ children, closeModal }) => {
+  const handleClose = () => {
+    closeModal(true);
+  };
+
+  return (
+    <AccessModalContainer>
+      <CloseButton type="button" onClick={handleClose}>
+        <svg>
+          <use href={sprite + '#close'} />
+        </svg>
+      </CloseButton>
+      {children}
+    </AccessModalContainer>
+  );
 };
 
 export default AccessModal;
