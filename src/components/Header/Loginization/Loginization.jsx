@@ -42,7 +42,7 @@ const Loginization = ({ closeModal }) => {
   // };
 
   return (
-    <AccessModal closeModal={closeModal} onSubmit={handleSubmit}>
+    <AccessModal closeModal={closeModal}>
       <LoginTitleContainer>
         <LoginHeader>Log In</LoginHeader>
         <p>
@@ -50,54 +50,47 @@ const Loginization = ({ closeModal }) => {
           continue your search for a psychologist.
         </p>
       </LoginTitleContainer>
-      <div>
-        <Formik
-          initialValues={initialValues}
-          validationSchema={validateLoginSchema}
-        >
-          {({ errors, touched, values }) => (
-            <FormStyled>
-              <label>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validateLoginSchema}
+        onSubmit={handleSubmit}
+      >
+        {({ errors, touched, values }) => (
+          <FormStyled>
+            <label>
+              <StyledField
+                type="email"
+                name="email"
+                placeholder="Email"
+                $hasError={touched.email && errors.email}
+                value={values.email}
+                required
+              />
+              <ErrorMessage name="email" component={ErrorMsg} />
+            </label>
+            <label>
+              <InputWrapper>
                 <StyledField
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  $hasError={touched.email && errors.email}
-                  value={values.email}
+                  type={showPassword ? 'text' : 'password'}
+                  name="password"
+                  placeholder="Password"
+                  $hasError={touched.password && errors.password}
+                  value={values.password}
                   required
                 />
-                <ErrorMessage name="email" component={ErrorMsg} />
-              </label>
-              <label>
-                <InputWrapper>
-                  <StyledField
-                    type={showPassword ? 'text' : 'password'}
-                    name="password"
-                    placeholder="Password"
-                    $hasError={touched.password && errors.password}
-                    value={values.password}
-                    required
+                <SvgStyled onClick={() => togglePasswordVisibility('password')}>
+                  <use
+                    href={sprite + `${showPassword ? '#show' : '#hidden'}`}
                   />
-                  <SvgStyled
-                    onClick={() => togglePasswordVisibility('password')}
-                  >
-                    <use
-                      href={sprite + `${showPassword ? '#show' : '#hidden'}`}
-                    />
-                  </SvgStyled>
+                </SvgStyled>
 
-                  <ErrorMessage name="password" component={ErrorMsg} />
-                </InputWrapper>
-              </label>
-
-              {/* <Button type="submit" disabled={isSubmitting}>
-                Log In
-              </Button> */}
-            </FormStyled>
-          )}
-        </Formik>
-      </div>
-      <LoginButton>Sign Up</LoginButton>
+                <ErrorMessage name="password" component={ErrorMsg} />
+              </InputWrapper>
+            </label>
+            <LoginButton>Sign Up</LoginButton>
+          </FormStyled>
+        )}
+      </Formik>
     </AccessModal>
   );
 };

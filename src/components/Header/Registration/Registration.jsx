@@ -32,10 +32,11 @@ const Registration = ({ closeModal }) => {
   };
 
   const handleSubmit = () => {
+    console.log('click');
     closeModal();
   };
   return (
-    <AccessModal closeModal={closeModal} onSubmit={handleSubmit}>
+    <AccessModal closeModal={closeModal}>
       <RegisterTitleContainer>
         <RegisterHeader>Registration</RegisterHeader>
         <p>
@@ -44,67 +45,64 @@ const Registration = ({ closeModal }) => {
           information.
         </p>
       </RegisterTitleContainer>
-      <div>
-        <Formik
-          initialValues={initialValues}
-          validationSchema={validateRegisterSchema}
-        >
-          {({ errors, touched, values }) => (
-            <FormStyled>
-              <label>
-                <InputWrapper>
-                  <StyledField
-                    type="text"
-                    name="name"
-                    placeholder="Name"
-                    $hasError={touched.name && errors.name}
-                    value={values.name}
-                    required
-                  />
-                  <ErrorMessage name="name" component={ErrorMsg} />
-                </InputWrapper>
-              </label>
-              <label>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validateRegisterSchema}
+        onSubmit={handleSubmit}
+      >
+        {({ errors, touched, values }) => (
+          <FormStyled>
+            <label>
+              <InputWrapper>
                 <StyledField
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  $hasError={touched.email && errors.email}
-                  value={values.email}
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  $hasError={touched.name && errors.name}
+                  value={values.name}
                   required
                 />
-                <ErrorMessage name="email" component={ErrorMsg} />
-              </label>
-              <label>
-                <InputWrapper>
-                  <StyledField
-                    type={showPassword ? 'text' : 'password'}
-                    name="password"
-                    placeholder="Password"
-                    $hasError={touched.password && errors.password}
-                    value={values.password}
-                    required
+                <ErrorMessage name="name" component={ErrorMsg} />
+              </InputWrapper>
+            </label>
+            <label>
+              <StyledField
+                type="email"
+                name="email"
+                placeholder="Email"
+                $hasError={touched.email && errors.email}
+                value={values.email}
+                required
+              />
+              <ErrorMessage name="email" component={ErrorMsg} />
+            </label>
+            <label>
+              <InputWrapper>
+                <StyledField
+                  type={showPassword ? 'text' : 'password'}
+                  name="password"
+                  placeholder="Password"
+                  $hasError={touched.password && errors.password}
+                  value={values.password}
+                  required
+                />
+                <SvgStyled onClick={() => togglePasswordVisibility('password')}>
+                  <use
+                    href={sprite + `${showPassword ? '#show' : '#hidden'}`}
                   />
-                  <SvgStyled
-                    onClick={() => togglePasswordVisibility('password')}
-                  >
-                    <use
-                      href={sprite + `${showPassword ? '#show' : '#hidden'}`}
-                    />
-                  </SvgStyled>
+                </SvgStyled>
 
-                  <ErrorMessage name="password" component={ErrorMsg} />
-                </InputWrapper>
-              </label>
+                <ErrorMessage name="password" component={ErrorMsg} />
+              </InputWrapper>
+            </label>
 
-              {/* <Button type="submit" disabled={isSubmitting}>
+            {/* <Button type="submit" disabled={isSubmitting}>
                 Log In
               </Button> */}
-            </FormStyled>
-          )}
-        </Formik>
-      </div>
-      <RegisterButton>Sign Up</RegisterButton>
+            <RegisterButton type="submit">Sign Up</RegisterButton>
+          </FormStyled>
+        )}
+      </Formik>
     </AccessModal>
   );
 };

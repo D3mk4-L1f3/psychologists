@@ -70,4 +70,5 @@ export const LoginButton = styled.button`
   color: var(--white);
   font-weight: 500;
   letter-spacing: -0.01em;
+  margin-top: 40px;
 `;
