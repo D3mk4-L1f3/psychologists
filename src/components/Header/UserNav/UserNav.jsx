@@ -1,17 +1,28 @@
-import { LinkItem, NavContainer } from "./UserNav.styled";
+import { NavLink } from 'react-router-dom';
+import { NavContainer } from './UserNav.styled';
 
 const UserNav = () => {
+  const isLogged = true;
+
   return (
     <NavContainer>
       <li>
-        <LinkItem>Home</LinkItem>
+        <NavLink aria-label="To Home Page" to="/">
+          Home
+        </NavLink>
       </li>
       <li>
-        <LinkItem>Psychologists</LinkItem>
+        <NavLink aria-label="To Psychologists List" to="/psychologists">
+          Psychologists
+        </NavLink>
       </li>
-      {/* <li>
-        <LinkItem>Favorites</LinkItem>
-      </li> */}
+      {isLogged && (
+        <li>
+          <NavLink aria-label="To Favorite List" to="/favorites">
+            Favorites
+          </NavLink>
+        </li>
+      )}
     </NavContainer>
   );
 };

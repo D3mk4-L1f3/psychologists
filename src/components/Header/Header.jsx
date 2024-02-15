@@ -1,18 +1,25 @@
 /* eslint-disable react/prop-types */
+import Loader from '../Shared/Loader/Loader';
 import Wrapper from '../Shared/Wrapper/Wrapper';
+import Access from './Access/Access';
 import { HeaderContainer, HeaderWrapper } from './Header.styled';
 import Logotype from './Logotype/Logotype';
-import UserAuth from './UserAuth/UserAuth';
 import UserNav from './UserNav/UserNav';
 
 const Header = ({ openModal, closeModal }) => {
+  const isLoading = false;
+
   return (
     <HeaderContainer>
       <Wrapper>
         <HeaderWrapper>
           <Logotype />
           <UserNav />
-          <UserAuth openModal={openModal} closeModal={closeModal} />
+          {isLoading ? (
+            <Loader variant="header" />
+          ) : (
+            <Access openModal={openModal} closeModal={closeModal} />
+          )}
         </HeaderWrapper>
       </Wrapper>
     </HeaderContainer>

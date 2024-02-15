@@ -1,12 +1,13 @@
-import { Logo, LogoContainer, SecondSpan } from "./Logotype.styled";
+import { NavLink } from 'react-router-dom';
+import { LogoContainer, SecondSpan } from './Logotype.styled';
 
 const Logotype = () => {
   return (
     <LogoContainer>
-      <Logo>
+      <NavLink aria-label="To Home Page" to="/">
         psychologists<span>.</span>
         <SecondSpan>services</SecondSpan>
-      </Logo>
+      </NavLink>
     </LogoContainer>
   );
 };

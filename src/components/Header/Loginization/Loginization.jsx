@@ -42,7 +42,7 @@ const Loginization = ({ closeModal }) => {
   // };
 
   return (
-    <AccessModal closeModal={closeModal}>
+    <AccessModal closeModal={closeModal} onSubmit={handleSubmit}>
       <LoginTitleContainer>
         <LoginHeader>Log In</LoginHeader>
         <p>
@@ -53,7 +53,6 @@ const Loginization = ({ closeModal }) => {
       <Formik
         initialValues={initialValues}
         validationSchema={validateLoginSchema}
-        onSubmit={handleSubmit}
       >
         {({ errors, touched, values }) => (
           <FormStyled>

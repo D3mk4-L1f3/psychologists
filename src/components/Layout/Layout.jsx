@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import Header from '../Header/Header';
-import Hero from '../Hero/Hero';
 import { Modal } from '../Modal/Modal';
+import Loader from '../Shared/Loader/Loader';
+import { Outlet } from 'react-router-dom';
 
 const Layout = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -24,7 +25,9 @@ const Layout = () => {
         closeModal={handleModalClose}
         // isLogged={isLogged}
       />
-      <Hero />
+      <Suspense fallback={<Loader variant="access-modal" />}>
+        <Outlet />
+      </Suspense>
       <Modal
         isModalOpen={isModalOpen}
         onCloseModal={handleModalClose}

@@ -14,7 +14,8 @@ import {
   SocialContainer,
 } from './Hero.styled';
 
-import image from '../../styles/image/main_img.jpg';
+import usual from '../../styles/image/hero/hero@1x.webp';
+import retina from '../../styles/image/hero/hero@2x.webp';
 import Wrapper from '../Shared/Wrapper/Wrapper';
 import sprite from '../../styles/sprite.svg';
 
@@ -41,7 +42,7 @@ const Hero = () => {
           </button>
         </HeroTitleContainer>
         <HeroImgContainer>
-          <HeroImage srcSet={`${image}`} alt="psychologist" />
+          <HeroImage srcSet={`${usual} 1x, ${retina} 2x`} alt="psychologist" />
           <CountContainer>
             <CheckBox>
               <svg>

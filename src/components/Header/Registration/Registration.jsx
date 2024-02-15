@@ -36,7 +36,7 @@ const Registration = ({ closeModal }) => {
     closeModal();
   };
   return (
-    <AccessModal closeModal={closeModal}>
+    <AccessModal closeModal={closeModal} onSubmit={handleSubmit}>
       <RegisterTitleContainer>
         <RegisterHeader>Registration</RegisterHeader>
         <p>
@@ -48,7 +48,6 @@ const Registration = ({ closeModal }) => {
       <Formik
         initialValues={initialValues}
         validationSchema={validateRegisterSchema}
-        onSubmit={handleSubmit}
       >
         {({ errors, touched, values }) => (
           <FormStyled>
