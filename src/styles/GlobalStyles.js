@@ -45,6 +45,7 @@ export const GlobalStyles = createGlobalStyle`
     --black: #191a15;
     --yellow: #ffc531;
     --grey: #8a8a89;
+    --bg-color: #f3f3f3;
     
     --green-transp: rgba(84, 190, 150, 0.2);
     --grey-transp-03: rgba(25, 26, 21, 0.3);
@@ -53,7 +54,7 @@ export const GlobalStyles = createGlobalStyle`
     /* --hero-desc: rgba(251, 251, 251, 0.5) */
 
 
- --border-transp-01: 1px solid rgba(25, 26, 21, 0.1);
+    --border-transp-01: 1px solid rgba(25, 26, 21, 0.1);
     --border-transp-02: 1px solid rgba(25, 26, 21, 0.2);
   }
 
@@ -64,6 +65,7 @@ body {
   font-size: 16px;
   line-height: 125%;
   color: var(--text-grey);
+  background: var(--bg-color);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: 0.3s;
