@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import {
   ButtonItemContainer,
   CheckBox,
@@ -18,8 +19,13 @@ import usual from '../../styles/image/hero/hero@1x.webp';
 import retina from '../../styles/image/hero/hero@2x.webp';
 import Wrapper from '../Shared/Wrapper/Wrapper';
 import sprite from '../../styles/sprite.svg';
+import Registration from '../Header/Registration/Registration';
 
-const Hero = () => {
+const Hero = ({ openModal, closeModal }) => {
+  const handleGetStarted = () => {
+    openModal(<Registration openModal={openModal} closeModal={closeModal} />);
+  };
+
   return (
     <Wrapper>
       <HeroContainer>
@@ -33,7 +39,7 @@ const Hero = () => {
             psychologists.
           </p>
           <button>
-            <ButtonItemContainer>
+            <ButtonItemContainer type="button" onClick={handleGetStarted}>
               <p>Get started</p>
               <svg>
                 <use href={sprite + '#arrow-45deg'} />

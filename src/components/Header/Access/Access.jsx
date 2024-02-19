@@ -3,14 +3,14 @@ import Logout from '../Logout/Logout';
 import UserAuth from '../UserAuth/UserAuth';
 
 const Access = ({ openModal, closeModal }) => {
-  const isLogged = true;
+  const isLogged = false;
 
   return (
     <>
       {isLogged ? (
         <Logout openModal={openModal} closeModal={closeModal} />
       ) : (
-        <UserAuth />
+        <UserAuth openModal={openModal} closeModal={closeModal} />
       )}
     </>
   );
