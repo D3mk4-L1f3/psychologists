@@ -10,7 +10,6 @@ function App() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState(null);
-  console.log(modalContent);
 
   const handleModalOpen = test => {
     setIsModalOpen(true);

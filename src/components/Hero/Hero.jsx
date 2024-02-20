@@ -38,8 +38,8 @@ const Hero = ({ openModal, closeModal }) => {
             guide in your own life with the help of our experienced
             psychologists.
           </p>
-          <button>
-            <ButtonItemContainer type="button" onClick={handleGetStarted}>
+          <button type="button" onClick={handleGetStarted}>
+            <ButtonItemContainer>
               <p>Get started</p>
               <svg>
                 <use href={sprite + '#arrow-45deg'} />
