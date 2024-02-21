@@ -6,6 +6,7 @@ import {
   CountDescription,
   DescriptionTitle,
   DescriptionTotal,
+  GetStartedActin,
   HeroContainer,
   HeroImage,
   HeroImgContainer,
@@ -19,13 +20,9 @@ import usual from '../../styles/image/hero/hero@1x.webp';
 import retina from '../../styles/image/hero/hero@2x.webp';
 import Wrapper from '../Shared/Wrapper/Wrapper';
 import sprite from '../../styles/sprite.svg';
-import Registration from '../Header/Registration/Registration';
+import { Link } from 'react-router-dom';
 
-const Hero = ({ openModal, closeModal }) => {
-  const handleGetStarted = () => {
-    openModal(<Registration openModal={openModal} closeModal={closeModal} />);
-  };
-
+const Hero = () => {
   return (
     <Wrapper>
       <HeroContainer>
@@ -38,14 +35,14 @@ const Hero = ({ openModal, closeModal }) => {
             guide in your own life with the help of our experienced
             psychologists.
           </p>
-          <button type="button" onClick={handleGetStarted}>
+          <GetStartedActin as={Link} to="/psychologists">
             <ButtonItemContainer>
               <p>Get started</p>
               <svg>
                 <use href={sprite + '#arrow-45deg'} />
               </svg>
             </ButtonItemContainer>
-          </button>
+          </GetStartedActin>
         </HeroTitleContainer>
         <HeroImgContainer>
           <HeroImage srcSet={`${usual} 1x, ${retina} 2x`} alt="psychologist" />

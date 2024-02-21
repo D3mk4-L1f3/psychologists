@@ -18,8 +18,15 @@ import {
 } from './PsychoCard.styled';
 import sprite from '../../styles/sprite.svg';
 import usual from '../../styles/image/hero/hero@1x.webp';
+import { useState } from 'react';
 
 const PsychoCard = () => {
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  const toggleFavorite = () => {
+    setIsFavorite(!isFavorite);
+  };
+
   return (
     <PsychoCardContainer>
       <AvatarContainer>
@@ -38,7 +45,7 @@ const PsychoCard = () => {
               Price / 1 hour: <RatingPriceTextSpan>180$</RatingPriceTextSpan>{' '}
             </RatingPriceText>
           </RatingPriceBlock>
-          <SvgHeart>
+          <SvgHeart $isFavorite={isFavorite} onClick={toggleFavorite}>
             <use href={`${sprite}#heart`}></use>
           </SvgHeart>
         </HeadDescriptionWrap>

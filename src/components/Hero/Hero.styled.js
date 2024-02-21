@@ -22,14 +22,14 @@ export const HeroTitleContainer = styled.div`
     letter-spacing: -0.02em;
     color: var(--black);
   }
+`;
 
-  & > button {
-    all: unset;
-    width: 135px;
-    border-radius: 30px;
-    padding: 18px 50px;
-    background: var(--green);
-  }
+export const GetStartedActin = styled.button`
+  all: unset;
+  width: 135px;
+  border-radius: 30px;
+  padding: 18px 50px;
+  background: var(--green);
 `;
 
 export const ButtonItemContainer = styled.div`

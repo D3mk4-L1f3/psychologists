@@ -30,15 +30,7 @@ function App() {
             <Layout openModal={handleModalOpen} closeModal={handleModalClose} />
           }
         >
-          <Route
-            index
-            element={
-              <HomePage
-                openModal={handleModalOpen}
-                closeModal={handleModalClose}
-              />
-            }
-          />
+          <Route index element={<HomePage />} />
           <Route path="/psychologists" element={<PsychologistsPage />} />
           <Route path="/favorites" element={<FavoritesPage />} />
         </Route>

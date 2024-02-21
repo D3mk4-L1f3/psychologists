@@ -86,11 +86,16 @@ export const SvgStar = styled.svg`
   margin-right: 8px;
   fill: var(--yellow);
 `;
-export const SvgHeart = styled.svg`
+export const SvgHeart = styled.svg.attrs(props => ({
+  $$isFavorite: props.$isFavorite,
+}))`
   width: 26px;
   height: 26px;
   fill: none;
-  stroke: var(--black);
+  stroke: ${({ $$isFavorite }) =>
+    $$isFavorite ? 'var(--black)' : 'var(--green)'};
+  fill: ${({ $$isFavorite }) =>
+    $$isFavorite ? 'transparent' : 'var(--green)'};
 `;
 export const PsychologistName = styled.p`
   font-weight: 500;
