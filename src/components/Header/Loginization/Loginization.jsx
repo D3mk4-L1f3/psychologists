@@ -1,8 +1,10 @@
 /* eslint-disable react/prop-types */
-import { ErrorMessage, Formik } from 'formik';
+import { useState } from 'react';
+import { Formik } from 'formik';
 import sprite from '../../../styles/sprite.svg';
-
+import { loginSchema } from '../../../helpers/validation';
 import AccessModal from '../../Shared/AccessModal/AccessModal';
+
 import {
   ErrorMsg,
   FormStyled,
@@ -13,10 +15,8 @@ import {
   StyledField,
   SvgStyled,
 } from './Loginization.styled';
-import { useState } from 'react';
-import { validateLoginSchema } from '../../../helpers/validation';
 
-const Loginization = ({ closeModal }) => {
+const Loginization = ({ closeModal, setUserData, loginSub }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const initialValues = {
@@ -30,19 +30,14 @@ const Loginization = ({ closeModal }) => {
     }
   };
 
-  const handleSubmit = () => {
-    closeModal();
+  const handleSubmit = values => {
+    loginSub(true);
+    setUserData(values);
+    // closeModal();
   };
-  // const handleSubmit = async values => {
-  //   const auth = getAuth();
-  //   signInWithEmailAndPassword(auth, values.email, values.password)
-  //     .then(console.log('login'))
-  //     .catch(console.error);
-  //   onClose();
-  // };
 
   return (
-    <AccessModal closeModal={closeModal} onSubmit={handleSubmit}>
+    <AccessModal closeModal={closeModal}>
       <LoginTitleContainer>
         <LoginHeader>Log In</LoginHeader>
         <p>
@@ -52,41 +47,33 @@ const Loginization = ({ closeModal }) => {
       </LoginTitleContainer>
       <Formik
         initialValues={initialValues}
-        validationSchema={validateLoginSchema}
+        validationSchema={loginSchema}
+        onSubmit={handleSubmit}
       >
-        {({ errors, touched, values }) => (
+        {({ errors, touched, isSubmitting }) => (
           <FormStyled>
-            <label>
+            <InputWrapper>
+              <StyledField name="email" type="email" placeholder="Email" />
+              {errors.email && touched.email ? (
+                <ErrorMsg>{errors.email}</ErrorMsg>
+              ) : null}
+            </InputWrapper>
+            <InputWrapper>
               <StyledField
-                type="email"
-                name="email"
-                placeholder="Email"
-                $hasError={touched.email && errors.email}
-                value={values.email}
-                required
+                name="password"
+                type={showPassword ? 'text' : 'password'}
+                placeholder="Password"
               />
-              <ErrorMessage name="email" component={ErrorMsg} />
-            </label>
-            <label>
-              <InputWrapper>
-                <StyledField
-                  type={showPassword ? 'text' : 'password'}
-                  name="password"
-                  placeholder="Password"
-                  $hasError={touched.password && errors.password}
-                  value={values.password}
-                  required
-                />
-                <SvgStyled onClick={() => togglePasswordVisibility('password')}>
-                  <use
-                    href={sprite + `${showPassword ? '#show' : '#hidden'}`}
-                  />
-                </SvgStyled>
-
-                <ErrorMessage name="password" component={ErrorMsg} />
-              </InputWrapper>
-            </label>
-            <LoginButton>Sign Up</LoginButton>
+              <SvgStyled onClick={() => togglePasswordVisibility('password')}>
+                <use href={sprite + `${showPassword ? '#show' : '#hidden'}`} />
+              </SvgStyled>
+              {errors.password && touched.password ? (
+                <ErrorMsg>{errors.password}</ErrorMsg>
+              ) : null}
+            </InputWrapper>
+            <LoginButton type="submit" disabled={isSubmitting}>
+              Submit
+            </LoginButton>
           </FormStyled>
         )}
       </Formik>

@@ -3,7 +3,7 @@ import { AccessModalContainer, CloseButton } from './AccessModal.styled';
 import sprite from '../../../styles/sprite.svg';
 import Loader from '../../Shared/Loader/Loader';
 
-const AccessModal = ({ children, closeModal, onSubmit }) => {
+const AccessModal = ({ children, closeModal }) => {
   const isLoading = false;
 
   const handleClose = () => {
@@ -11,7 +11,7 @@ const AccessModal = ({ children, closeModal, onSubmit }) => {
   };
 
   return (
-    <AccessModalContainer onSubmit={onSubmit}>
+    <AccessModalContainer>
       <CloseButton type="button" onClick={handleClose}>
         <svg>
           <use href={sprite + '#close'} />

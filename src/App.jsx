@@ -11,9 +11,9 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState(null);
 
-  const handleModalOpen = test => {
+  const handleModalOpen = content => {
     setIsModalOpen(true);
-    setModalContent(test);
+    setModalContent(content);
   };
 
   const handleModalClose = () => {

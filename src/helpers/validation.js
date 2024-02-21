@@ -1,19 +1,21 @@
 import * as Yup from 'yup';
 
-export const validateLoginSchema = Yup.object().shape({
-  name: Yup.string().required('Required'),
-  email: Yup.string().required('Required'),
+export const loginSchema = Yup.object().shape({
+  email: Yup.string().email('Invalid email').required('Required'),
   password: Yup.string()
-    .min(8, 'Min length 8')
-    .max(64, 'Max length 64')
-    .required(),
+    .min(6, 'Min length 6')
+    .max(12, 'Max length 12')
+    .required('Required'),
 });
 
-export const validateRegisterSchema = Yup.object().shape({
-  name: Yup.string().required('Required'),
+export const registerSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(3, 'Too Short!')
+    .max(12, 'Too Long!')
+    .required('Required'),
   email: Yup.string().required('Required'),
   password: Yup.string()
-    .min(8, 'Min length 8')
-    .max(64, 'Max length 64')
-    .required(),
+    .min(6, 'Min length 6')
+    .max(12, 'Max length 12')
+    .required('Required'),
 });

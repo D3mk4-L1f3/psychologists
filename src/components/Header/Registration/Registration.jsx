@@ -2,6 +2,8 @@
 import { useState } from 'react';
 import AccessModal from '../../Shared/AccessModal/AccessModal';
 import sprite from '../../../styles/sprite.svg';
+import { Formik } from 'formik';
+import { registerSchema } from '../../../helpers/validation';
 
 import {
   ErrorMsg,
@@ -13,10 +15,8 @@ import {
   StyledField,
   SvgStyled,
 } from './Registration.styled';
-import { ErrorMessage, Formik } from 'formik';
-import { validateRegisterSchema } from '../../../helpers/validation';
 
-const Registration = ({ closeModal }) => {
+const Registration = ({ closeModal, setUserData, submit }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const initialValues = {
@@ -31,12 +31,13 @@ const Registration = ({ closeModal }) => {
     }
   };
 
-  const handleSubmit = () => {
-    console.log('click');
-    closeModal();
+  const handleSubmit = values => {
+    submit(true);
+    setUserData(values);
+    // closeModal();
   };
   return (
-    <AccessModal closeModal={closeModal} onSubmit={handleSubmit}>
+    <AccessModal closeModal={closeModal}>
       <RegisterTitleContainer>
         <RegisterHeader>Registration</RegisterHeader>
         <p>
@@ -47,58 +48,41 @@ const Registration = ({ closeModal }) => {
       </RegisterTitleContainer>
       <Formik
         initialValues={initialValues}
-        validationSchema={validateRegisterSchema}
+        validationSchema={registerSchema}
+        onSubmit={handleSubmit}
       >
-        {({ errors, touched, values }) => (
+        {({ errors, touched, isSubmitting }) => (
           <FormStyled>
-            <label>
-              <InputWrapper>
-                <StyledField
-                  type="text"
-                  name="name"
-                  placeholder="Name"
-                  $hasError={touched.name && errors.name}
-                  value={values.name}
-                  required
-                />
-                <ErrorMessage name="name" component={ErrorMsg} />
-              </InputWrapper>
-            </label>
-            <label>
+            <InputWrapper>
+              <StyledField type="text" name="name" placeholder="Name" />
+              {errors.name && touched.name ? (
+                <ErrorMsg>{errors.name}</ErrorMsg>
+              ) : null}
+            </InputWrapper>
+            <InputWrapper>
+              <StyledField type="email" name="email" placeholder="Email" />
+              {errors.email && touched.email ? (
+                <ErrorMsg>{errors.email}</ErrorMsg>
+              ) : null}
+            </InputWrapper>
+            <InputWrapper>
               <StyledField
-                type="email"
-                name="email"
-                placeholder="Email"
-                $hasError={touched.email && errors.email}
-                value={values.email}
-                required
+                type={showPassword ? 'text' : 'password'}
+                name="password"
+                placeholder="Password"
               />
-              <ErrorMessage name="email" component={ErrorMsg} />
-            </label>
-            <label>
-              <InputWrapper>
-                <StyledField
-                  type={showPassword ? 'text' : 'password'}
-                  name="password"
-                  placeholder="Password"
-                  $hasError={touched.password && errors.password}
-                  value={values.password}
-                  required
-                />
-                <SvgStyled onClick={() => togglePasswordVisibility('password')}>
-                  <use
-                    href={sprite + `${showPassword ? '#show' : '#hidden'}`}
-                  />
-                </SvgStyled>
+              <SvgStyled onClick={() => togglePasswordVisibility('password')}>
+                <use href={sprite + `${showPassword ? '#show' : '#hidden'}`} />
+              </SvgStyled>
 
-                <ErrorMessage name="password" component={ErrorMsg} />
-              </InputWrapper>
-            </label>
+              {errors.password && touched.password ? (
+                <ErrorMsg>{errors.password}</ErrorMsg>
+              ) : null}
+            </InputWrapper>
 
-            {/* <Button type="submit" disabled={isSubmitting}>
-                Log In
-              </Button> */}
-            <RegisterButton type="submit">Sign Up</RegisterButton>
+            <RegisterButton type="submit" disabled={isSubmitting}>
+              Sign Up
+            </RegisterButton>
           </FormStyled>
         )}
       </Formik>
