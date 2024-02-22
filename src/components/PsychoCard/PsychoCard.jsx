@@ -17,11 +17,22 @@ import {
   SvgStar,
 } from './PsychoCard.styled';
 import sprite from '../../styles/sprite.svg';
-import usual from '../../styles/image/hero/hero@1x.webp';
 import { useState } from 'react';
 
-const PsychoCard = () => {
+const PsychoCard = psychologist => {
   const [isFavorite, setIsFavorite] = useState(false);
+
+  const {
+    name,
+    avatar_url,
+    experience,
+    price_per_hour,
+    rating,
+    license,
+    specialization,
+    initial_consultation,
+    about,
+  } = psychologist.psychologist;
 
   const toggleFavorite = () => {
     setIsFavorite(!isFavorite);
@@ -30,7 +41,7 @@ const PsychoCard = () => {
   return (
     <PsychoCardContainer>
       <AvatarContainer>
-        <img srcSet={usual} alt="psycho avatar" />
+        <img srcSet={avatar_url} alt={name} />
         <OnlineStatusContainer></OnlineStatusContainer>
       </AvatarContainer>
       <DescriptionWrap>
@@ -40,49 +51,41 @@ const PsychoCard = () => {
             <SvgStar>
               <use href={`${sprite}#star`}></use>
             </SvgStar>
-            <RatingPriceText>Rating: 4.7</RatingPriceText>
+            <RatingPriceText>Rating: {rating}</RatingPriceText>
             <RatingPriceText>
-              Price / 1 hour: <RatingPriceTextSpan>180$</RatingPriceTextSpan>{' '}
+              Price / 1 hour:
+              <RatingPriceTextSpan> {price_per_hour}$</RatingPriceTextSpan>{' '}
             </RatingPriceText>
           </RatingPriceBlock>
           <SvgHeart $isFavorite={isFavorite} onClick={toggleFavorite}>
             <use href={`${sprite}#heart`}></use>
           </SvgHeart>
         </HeadDescriptionWrap>
-        <PsychologistName>Dr. Mark Thompson</PsychologistName>
+        <PsychologistName>{name}</PsychologistName>
         <SkillsBlock>
           <li>
             <SkillsBlockText>
-              Experience: <span>20 years</span>
+              Experience: <span>{experience}</span>
             </SkillsBlockText>
           </li>
           <li>
             <SkillsBlockText>
-              License: <span>Licensed Psychologist (License #54321)</span>
+              License: <span>{license}</span>
             </SkillsBlockText>
           </li>
           <li>
             <SkillsBlockText>
-              Specialization: <span>Relationship Counseling</span>
+              Specialization: <span>{specialization}</span>
             </SkillsBlockText>
           </li>
           <li>
             <SkillsBlockText>
               Initial_consultation:
-              <span>Free 60-minute initial consultation</span>
+              <span>{initial_consultation}</span>
             </SkillsBlockText>
           </li>
         </SkillsBlock>
-        <DescriptionText>
-          Dr. Mark Thompson is a highly experienced and licensed psychologist
-          specializing in Relationship Counseling. With 20 years of practice, he
-          has helped individuals navigate and improve their relationships,
-          leading to better well-being and personal growth. Dr. Thompson is
-          known for his expertise and ability to provide invaluable insights to
-          his clients. His approach to therapy is tailored to each individual`s
-          unique needs, ensuring a supportive and effective counseling
-          experience.
-        </DescriptionText>
+        <DescriptionText>{about}</DescriptionText>
         <ReadMoreButton>Read more</ReadMoreButton>
       </DescriptionWrap>
     </PsychoCardContainer>

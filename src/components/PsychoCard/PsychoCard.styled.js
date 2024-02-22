@@ -37,12 +37,14 @@ export const OnlineStatusContainer = styled.div`
 export const DescriptionWrap = styled.div`
   width: 100%;
 `;
+
 export const HeadDescriptionWrap = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 8px;
   width: 100%;
 `;
+
 export const PsyText = styled.p`
   color: var(--grey);
   font-weight: 500;
@@ -93,9 +95,9 @@ export const SvgHeart = styled.svg.attrs(props => ({
   height: 26px;
   fill: none;
   stroke: ${({ $$isFavorite }) =>
-    $$isFavorite ? 'var(--black)' : 'var(--green)'};
+    $$isFavorite ? 'var(--green)' : 'var(--black)'};
   fill: ${({ $$isFavorite }) =>
-    $$isFavorite ? 'transparent' : 'var(--green)'};
+    $$isFavorite ? 'var(--green)' : 'transparent'};
 `;
 export const PsychologistName = styled.p`
   font-weight: 500;
