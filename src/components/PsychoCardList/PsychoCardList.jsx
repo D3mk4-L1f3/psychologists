@@ -1,5 +1,11 @@
+import PsychoCard from '../PsychoCard/PsychoCard';
+
 const PsychoCardList = () => {
-  return <div>PsychoCardList</div>;
+  return (
+    <div>
+      <PsychoCard />
+    </div>
+  );
 };
 
 export default PsychoCardList;
