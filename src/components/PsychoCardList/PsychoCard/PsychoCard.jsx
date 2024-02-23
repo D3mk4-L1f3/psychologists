@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import {
   AvatarContainer,
   DescriptionText,
@@ -16,11 +17,15 @@ import {
   SvgHeart,
   SvgStar,
 } from './PsychoCard.styled';
-import sprite from '../../styles/sprite.svg';
+import sprite from '../../../styles/sprite.svg';
 import { useState } from 'react';
+import MoreInfo from './MoreInfo/MoreInfo';
+import LazyLoad from 'react-lazy-load';
+import PsyForm from '../../PsyForm/PsyForm';
 
-const PsychoCard = psychologist => {
+const PsychoCard = ({ psychologist, openModal, closeModal }) => {
   const [isFavorite, setIsFavorite] = useState(false);
+  const [isMoreInfo, setIsMoreInfo] = useState(false);
 
   const {
     name,
@@ -32,16 +37,29 @@ const PsychoCard = psychologist => {
     specialization,
     initial_consultation,
     about,
-  } = psychologist.psychologist;
+    reviews,
+  } = psychologist;
 
   const toggleFavorite = () => {
     setIsFavorite(!isFavorite);
   };
 
+  const handleMoreInfo = () => {
+    setIsMoreInfo(!isMoreInfo);
+  };
+
+  const handleClick = () => {
+    openModal(
+      <PsyForm closeModal={closeModal} name={name} avatar_url={avatar_url} />
+    );
+  };
+
   return (
     <PsychoCardContainer>
       <AvatarContainer>
-        <img srcSet={avatar_url} alt={name} />
+        <LazyLoad offset={100}>
+          <img srcSet={avatar_url} alt={name} />
+        </LazyLoad>
         <OnlineStatusContainer></OnlineStatusContainer>
       </AvatarContainer>
       <DescriptionWrap>
@@ -86,7 +104,12 @@ const PsychoCard = psychologist => {
           </li>
         </SkillsBlock>
         <DescriptionText>{about}</DescriptionText>
-        <ReadMoreButton>Read more</ReadMoreButton>
+        {!isMoreInfo && (
+          <ReadMoreButton type="button" onClick={handleMoreInfo}>
+            Read more
+          </ReadMoreButton>
+        )}
+        {isMoreInfo && <MoreInfo reviews={reviews} handleClick={handleClick} />}
       </DescriptionWrap>
     </PsychoCardContainer>
   );

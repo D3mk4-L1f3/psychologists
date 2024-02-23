@@ -31,7 +31,15 @@ function App() {
           }
         >
           <Route index element={<HomePage />} />
-          <Route path="/psychologists" element={<PsychologistsPage />} />
+          <Route
+            path="/psychologists"
+            element={
+              <PsychologistsPage
+                openModal={handleModalOpen}
+                closeModal={handleModalClose}
+              />
+            }
+          />
           <Route path="/favorites" element={<FavoritesPage />} />
         </Route>
         <Route path="*" element={<Navigate to="/" />} />

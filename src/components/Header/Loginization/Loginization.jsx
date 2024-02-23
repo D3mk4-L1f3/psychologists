@@ -10,6 +10,7 @@ import {
   FormStyled,
   InputWrapper,
   LoginButton,
+  LoginContainer,
   LoginHeader,
   LoginTitleContainer,
   StyledField,
@@ -38,45 +39,49 @@ const Loginization = ({ closeModal, setUserData, loginSub }) => {
 
   return (
     <AccessModal closeModal={closeModal}>
-      <LoginTitleContainer>
-        <LoginHeader>Log In</LoginHeader>
-        <p>
-          Welcome back! Please enter your credentials to access your account and
-          continue your search for a psychologist.
-        </p>
-      </LoginTitleContainer>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={loginSchema}
-        onSubmit={handleSubmit}
-      >
-        {({ errors, touched, isSubmitting }) => (
-          <FormStyled>
-            <InputWrapper>
-              <StyledField name="email" type="email" placeholder="Email" />
-              {errors.email && touched.email ? (
-                <ErrorMsg>{errors.email}</ErrorMsg>
-              ) : null}
-            </InputWrapper>
-            <InputWrapper>
-              <StyledField
-                name="password"
-                type={showPassword ? 'text' : 'password'}
-                placeholder="Password"
-              />
-              <SvgStyled onClick={() => togglePasswordVisibility('password')}>
-                <use href={sprite + `${showPassword ? '#show' : '#hidden'}`} />
-              </SvgStyled>
-              {errors.password && touched.password ? (
-                <ErrorMsg>{errors.password}</ErrorMsg>
-              ) : null}
-            </InputWrapper>
-            <LoginButton type="submit" disabled={isSubmitting}>
-              Submit
-            </LoginButton>
-          </FormStyled>
-        )}
-      </Formik>
+      <LoginContainer>
+        <LoginTitleContainer>
+          <LoginHeader>Log In</LoginHeader>
+          <p>
+            Welcome back! Please enter your credentials to access your account
+            and continue your search for a psychologist.
+          </p>
+        </LoginTitleContainer>
+        <Formik
+          initialValues={initialValues}
+          validationSchema={loginSchema}
+          onSubmit={handleSubmit}
+        >
+          {({ errors, touched, isSubmitting }) => (
+            <FormStyled>
+              <InputWrapper>
+                <StyledField name="email" type="email" placeholder="Email" />
+                {errors.email && touched.email ? (
+                  <ErrorMsg>{errors.email}</ErrorMsg>
+                ) : null}
+              </InputWrapper>
+              <InputWrapper>
+                <StyledField
+                  name="password"
+                  type={showPassword ? 'text' : 'password'}
+                  placeholder="Password"
+                />
+                <SvgStyled onClick={() => togglePasswordVisibility('password')}>
+                  <use
+                    href={sprite + `${showPassword ? '#show' : '#hidden'}`}
+                  />
+                </SvgStyled>
+                {errors.password && touched.password ? (
+                  <ErrorMsg>{errors.password}</ErrorMsg>
+                ) : null}
+              </InputWrapper>
+              <LoginButton type="submit" disabled={isSubmitting}>
+                Submit
+              </LoginButton>
+            </FormStyled>
+          )}
+        </Formik>
+      </LoginContainer>
     </AccessModal>
   );
 };

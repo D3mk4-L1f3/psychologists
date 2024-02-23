@@ -35,6 +35,8 @@ export const OnlineStatusContainer = styled.div`
 `;
 
 export const DescriptionWrap = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 100%;
 `;
 
@@ -88,6 +90,7 @@ export const SvgStar = styled.svg`
   margin-right: 8px;
   fill: var(--yellow);
 `;
+
 export const SvgHeart = styled.svg.attrs(props => ({
   $$isFavorite: props.$isFavorite,
 }))`
@@ -133,11 +136,12 @@ export const SkillsBlockText = styled.p`
 export const DescriptionText = styled.p`
   margin-bottom: 14px;
 `;
-export const ReadMoreButton = styled.a`
+
+export const ReadMoreButton = styled.button`
+  all: unset;
+  width: 82px;
   font-weight: 500;
   line-height: 150%;
   color: var(--black);
-  text-decoration-skip-ink: none;
-  padding-bottom: 5px;
   border-bottom: 1px solid var(--black);
 `;

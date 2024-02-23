@@ -1,11 +1,6 @@
 import styled from 'styled-components';
 
 export const AccessModalContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  width: 438px;
-  gap: 40px;
   padding: 64px;
   background: var(--white);
 `;

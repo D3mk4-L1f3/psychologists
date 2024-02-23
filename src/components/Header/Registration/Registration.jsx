@@ -10,6 +10,7 @@ import {
   FormStyled,
   InputWrapper,
   RegisterButton,
+  RegisterContainer,
   RegisterHeader,
   RegisterTitleContainer,
   StyledField,
@@ -38,54 +39,58 @@ const Registration = ({ closeModal, setUserData, submit }) => {
   };
   return (
     <AccessModal closeModal={closeModal}>
-      <RegisterTitleContainer>
-        <RegisterHeader>Registration</RegisterHeader>
-        <p>
-          Thank you for your interest in our platform! In order to register, we
-          need some information. Please provide us with the following
-          information.
-        </p>
-      </RegisterTitleContainer>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={registerSchema}
-        onSubmit={handleSubmit}
-      >
-        {({ errors, touched, isSubmitting }) => (
-          <FormStyled>
-            <InputWrapper>
-              <StyledField type="text" name="name" placeholder="Name" />
-              {errors.name && touched.name ? (
-                <ErrorMsg>{errors.name}</ErrorMsg>
-              ) : null}
-            </InputWrapper>
-            <InputWrapper>
-              <StyledField type="email" name="email" placeholder="Email" />
-              {errors.email && touched.email ? (
-                <ErrorMsg>{errors.email}</ErrorMsg>
-              ) : null}
-            </InputWrapper>
-            <InputWrapper>
-              <StyledField
-                type={showPassword ? 'text' : 'password'}
-                name="password"
-                placeholder="Password"
-              />
-              <SvgStyled onClick={() => togglePasswordVisibility('password')}>
-                <use href={sprite + `${showPassword ? '#show' : '#hidden'}`} />
-              </SvgStyled>
+      <RegisterContainer>
+        <RegisterTitleContainer>
+          <RegisterHeader>Registration</RegisterHeader>
+          <p>
+            Thank you for your interest in our platform! In order to register,
+            we need some information. Please provide us with the following
+            information.
+          </p>
+        </RegisterTitleContainer>
+        <Formik
+          initialValues={initialValues}
+          validationSchema={registerSchema}
+          onSubmit={handleSubmit}
+        >
+          {({ errors, touched, isSubmitting }) => (
+            <FormStyled>
+              <InputWrapper>
+                <StyledField type="text" name="name" placeholder="Name" />
+                {errors.name && touched.name ? (
+                  <ErrorMsg>{errors.name}</ErrorMsg>
+                ) : null}
+              </InputWrapper>
+              <InputWrapper>
+                <StyledField type="email" name="email" placeholder="Email" />
+                {errors.email && touched.email ? (
+                  <ErrorMsg>{errors.email}</ErrorMsg>
+                ) : null}
+              </InputWrapper>
+              <InputWrapper>
+                <StyledField
+                  type={showPassword ? 'text' : 'password'}
+                  name="password"
+                  placeholder="Password"
+                />
+                <SvgStyled onClick={() => togglePasswordVisibility('password')}>
+                  <use
+                    href={sprite + `${showPassword ? '#show' : '#hidden'}`}
+                  />
+                </SvgStyled>
 
-              {errors.password && touched.password ? (
-                <ErrorMsg>{errors.password}</ErrorMsg>
-              ) : null}
-            </InputWrapper>
+                {errors.password && touched.password ? (
+                  <ErrorMsg>{errors.password}</ErrorMsg>
+                ) : null}
+              </InputWrapper>
 
-            <RegisterButton type="submit" disabled={isSubmitting}>
-              Sign Up
-            </RegisterButton>
-          </FormStyled>
-        )}
-      </Formik>
+              <RegisterButton type="submit" disabled={isSubmitting}>
+                Sign Up
+              </RegisterButton>
+            </FormStyled>
+          )}
+        </Formik>
+      </RegisterContainer>
     </AccessModal>
   );
 };

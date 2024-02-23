@@ -1,6 +1,15 @@
 import styled from 'styled-components';
 import { Field, Form } from 'formik';
 
+export const RegisterContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  /* width: 438px; */
+  gap: 40px;
+  width: 438px;
+`;
+
 export const RegisterTitleContainer = styled.div`
   display: flex;
   flex-direction: column;
