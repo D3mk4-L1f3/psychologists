@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { useState } from 'react';
 import AccessModal from '../Shared/AccessModal/AccessModal';
 import {
   FormContainer,
@@ -10,8 +11,13 @@ import {
   SelectedPsychologist,
   SendBtn,
 } from './PsyForm.styled';
+import usual from '../../styles/image/defaultImg/default@1x.webp';
+import retina from '../../styles/image/defaultImg/default@2x.webp';
 
 const PsyForm = ({ closeModal, name, avatar_url }) => {
+  const [imageLoadError, setImageLoadError] = useState(false);
+  const handleImageError = () => setImageLoadError(true);
+
   return (
     <AccessModal closeModal={closeModal}>
       <FormContainer>
@@ -25,7 +31,15 @@ const PsyForm = ({ closeModal, name, avatar_url }) => {
           </p>
         </HeaderContainer>
         <SelectedPsychologist>
-          <PsyAvatar srcSet={avatar_url} alt={name} />
+          {imageLoadError ? (
+            <PsyAvatar srcSet={`${usual} 1x, ${retina} 2x`} alt={name} />
+          ) : (
+            <PsyAvatar
+              srcSet={avatar_url}
+              alt={name}
+              onError={handleImageError}
+            />
+          )}
           <NameContainer>
             <p>Your psychologists</p>
             <PsyName>{name}</PsyName>

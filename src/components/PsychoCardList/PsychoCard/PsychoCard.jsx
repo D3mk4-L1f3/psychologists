@@ -22,10 +22,14 @@ import { useState } from 'react';
 import MoreInfo from './MoreInfo/MoreInfo';
 import LazyLoad from 'react-lazy-load';
 import PsyForm from '../../PsyForm/PsyForm';
+import usual from '../../../styles/image/defaultImg/default@1x.webp';
+import retina from '../../../styles/image/defaultImg/default@2x.webp';
 
 const PsychoCard = ({ psychologist, openModal, closeModal }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [isMoreInfo, setIsMoreInfo] = useState(false);
+  const [imageLoadError, setImageLoadError] = useState(false);
+  const handleImageError = () => setImageLoadError(true);
 
   const {
     name,
@@ -57,9 +61,13 @@ const PsychoCard = ({ psychologist, openModal, closeModal }) => {
   return (
     <PsychoCardContainer>
       <AvatarContainer>
-        <LazyLoad offset={100}>
-          <img srcSet={avatar_url} alt={name} />
-        </LazyLoad>
+        {imageLoadError ? (
+          <img srcSet={`${usual} 1x, ${retina} 2x`} alt={name} />
+        ) : (
+          <LazyLoad offset={100}>
+            <img srcSet={avatar_url} alt={name} onError={handleImageError} />
+          </LazyLoad>
+        )}
         <OnlineStatusContainer></OnlineStatusContainer>
       </AvatarContainer>
       <DescriptionWrap>
