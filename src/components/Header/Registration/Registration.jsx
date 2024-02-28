@@ -17,7 +17,7 @@ import {
   SvgStyled,
 } from './Registration.styled';
 
-const Registration = ({ closeModal, setUserData, submit }) => {
+const Registration = ({ closeModal, setUserData, registerSub }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const initialValues = {
@@ -33,7 +33,7 @@ const Registration = ({ closeModal, setUserData, submit }) => {
   };
 
   const handleSubmit = values => {
-    submit(true);
+    registerSub(true);
     setUserData(values);
     // closeModal();
   };

@@ -1,26 +1,54 @@
 /* eslint-disable react/prop-types */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Loader from '../Shared/Loader/Loader';
 import Wrapper from '../Shared/Wrapper/Wrapper';
 import Access from './Access/Access';
 import { HeaderContainer, HeaderWrapper } from './Header.styled';
 import Logotype from './Logotype/Logotype';
 import UserNav from './UserNav/UserNav';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../redux/user/auth';
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+} from 'firebase/auth';
 
 const Header = ({ openModal, closeModal }) => {
   const [userValue, setUserValue] = useState({});
-  const [isSubmit, setIsSubmit] = useState(false);
+  const [isRegisterSubmit, setIsRegisterSubmit] = useState(false);
   const [isLoginSubmit, setIsLoginSubmit] = useState(false);
+  const dispatch = useDispatch();
+  const auth = getAuth();
 
   const isLoading = false;
-  console.log(userValue);
-  console.log(isSubmit);
-  console.log(isLoginSubmit);
 
-  // const login = () => {
-  //   // const { email, password } = userValue;
-  //   // dispatch(signIn({ email, password }));
-  // };
+  const login = () => {
+    const { email, password } = userValue;
+    signInWithEmailAndPassword(auth, email, password).catch(console.error);
+  };
+
+  const register = () => {
+    const { email, password } = userValue;
+    createUserWithEmailAndPassword(auth, email, password).catch(console.error);
+  };
+
+  useEffect(() => {
+    if (isRegisterSubmit) {
+      register();
+      // setIsSubmit(false);
+    }
+    // if (enter) {
+    //   login();
+    //   CloseModal(true);
+    //   setUserValue({});
+    // }
+    if (isLoginSubmit) {
+      login();
+      // setIsLoginSubmit(false);
+      // setUserValue({});
+    }
+  }, [isRegisterSubmit, isLoginSubmit]);
 
   return (
     <HeaderContainer>
@@ -35,7 +63,7 @@ const Header = ({ openModal, closeModal }) => {
               openModal={openModal}
               closeModal={closeModal}
               setUserData={setUserValue}
-              submit={setIsSubmit}
+              registerSub={setIsRegisterSubmit}
               loginSub={setIsLoginSubmit}
             />
           )}

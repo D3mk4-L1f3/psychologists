@@ -3,7 +3,13 @@ import Loginization from '../Loginization/Loginization';
 import Registration from '../Registration/Registration';
 import { AuthButton, AuthContainerList } from './UserAuth.styled';
 
-const UserAuth = ({ openModal, closeModal, setUserData, submit, loginSub }) => {
+const UserAuth = ({
+  openModal,
+  closeModal,
+  setUserData,
+  registerSub,
+  loginSub,
+}) => {
   const handleLogin = () => {
     openModal(
       <Loginization
@@ -20,7 +26,7 @@ const UserAuth = ({ openModal, closeModal, setUserData, submit, loginSub }) => {
       <Registration
         closeModal={closeModal}
         setUserData={setUserData}
-        submit={submit}
+        registerSub={registerSub}
       />
     );
   };

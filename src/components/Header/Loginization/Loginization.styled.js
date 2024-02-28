@@ -67,6 +67,8 @@ export const InputWrapper = styled.div`
 `;
 export const ErrorMsg = styled.div`
   position: absolute;
+  top: 14px;
+  right: 37px;
   font-size: 12px;
   color: red;
 `;

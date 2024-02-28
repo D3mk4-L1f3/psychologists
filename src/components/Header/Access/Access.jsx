@@ -2,7 +2,13 @@
 import Logout from '../Logout/Logout';
 import UserAuth from '../UserAuth/UserAuth';
 
-const Access = ({ openModal, closeModal, setUserData, submit, loginSub }) => {
+const Access = ({
+  openModal,
+  closeModal,
+  setUserData,
+  registerSub,
+  loginSub,
+}) => {
   const isLogged = false;
 
   return (
@@ -12,7 +18,7 @@ const Access = ({ openModal, closeModal, setUserData, submit, loginSub }) => {
       ) : (
         <UserAuth
           setUserData={setUserData}
-          submit={submit}
+          registerSub={registerSub}
           loginSub={loginSub}
           openModal={openModal}
           closeModal={closeModal}
