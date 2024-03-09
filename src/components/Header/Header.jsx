@@ -25,12 +25,16 @@ const Header = ({ openModal, closeModal }) => {
 
   const login = () => {
     const { email, password } = userValue;
-    signInWithEmailAndPassword(auth, email, password).catch(console.error);
+    signInWithEmailAndPassword(auth, email, password)
+      .then(console.log)
+      .catch(console.error);
   };
 
   const register = () => {
     const { email, password } = userValue;
-    createUserWithEmailAndPassword(auth, email, password).catch(console.error);
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(console.log)
+      .catch(console.error);
   };
 
   useEffect(() => {
