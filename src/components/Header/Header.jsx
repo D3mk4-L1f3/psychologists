@@ -6,35 +6,24 @@ import Access from './Access/Access';
 import { HeaderContainer, HeaderWrapper } from './Header.styled';
 import Logotype from './Logotype/Logotype';
 import UserNav from './UserNav/UserNav';
-import { useDispatch } from 'react-redux';
-import { setUser } from '../../redux/user/auth';
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-} from 'firebase/auth';
+// import { useDispatch } from 'react-redux';
 
 const Header = ({ openModal, closeModal }) => {
   const [userValue, setUserValue] = useState({});
   const [isRegisterSubmit, setIsRegisterSubmit] = useState(false);
   const [isLoginSubmit, setIsLoginSubmit] = useState(false);
-  const dispatch = useDispatch();
-  const auth = getAuth();
+  // const dispatch = useDispatch();
 
   const isLoading = false;
 
   const login = () => {
     const { email, password } = userValue;
-    signInWithEmailAndPassword(auth, email, password)
-      .then(console.log)
-      .catch(console.error);
+    console.log(email, password);
   };
 
   const register = () => {
-    const { email, password } = userValue;
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(console.log)
-      .catch(console.error);
+    const { email, password, name } = userValue;
+    console.log(email, password, name);
   };
 
   useEffect(() => {

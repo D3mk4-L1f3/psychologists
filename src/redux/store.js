@@ -48,7 +48,7 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { configureStore } from '@reduxjs/toolkit';
-import { psychologistsReducer } from './notes/slice';
+import { psychologistsReducer } from './psychologists/slice';
 import { authReducer } from './auth/slice';
 
 const authPersistConfig = {
