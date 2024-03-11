@@ -3,8 +3,8 @@ import { logOut, signIn, signUp, tokenRefresh, register } from './operations';
 
 const initialState = {
   user: {
-    email: '',
     name: '',
+    email: '',
     avatarURL: '',
   },
   token: '',

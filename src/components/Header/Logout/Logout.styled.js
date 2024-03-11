@@ -14,20 +14,10 @@ export const LogoutContainer = styled.ul`
   }
 `;
 
-export const AvatarContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+export const AvatarContainer = styled.img`
   border-radius: 10px;
-  background: var(--green);
   width: 40px;
   height: 40px;
-
-  & > svg {
-    width: 16px;
-    height: 16px;
-    fill: var(--white);
-  }
 `;
 
 export const UserNameWrapper = styled.p`

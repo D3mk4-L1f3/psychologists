@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
+import { useSelector } from 'react-redux';
 import Logout from '../Logout/Logout';
 import UserAuth from '../UserAuth/UserAuth';
+import { selectIsLoggedIn } from '../../../redux/auth/selectors';
 
 const Access = ({
   openModal,
@@ -9,7 +11,7 @@ const Access = ({
   registerSub,
   loginSub,
 }) => {
-  const isLogged = false;
+  const isLogged = useSelector(selectIsLoggedIn);
 
   return (
     <>
