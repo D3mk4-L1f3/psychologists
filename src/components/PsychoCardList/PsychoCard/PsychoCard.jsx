@@ -24,14 +24,12 @@ import LazyLoad from 'react-lazy-load';
 import PsyForm from '../../PsyForm/PsyForm';
 import usual from '../../../styles/image/defaultImg/default@1x.webp';
 import retina from '../../../styles/image/defaultImg/default@2x.webp';
+import { useDispatch } from 'react-redux';
+import { addFavoritePsychologist } from '../../../redux/psychologists/operations';
 
 const PsychoCard = ({ psychologist, openModal, closeModal }) => {
-  const [isFavorite, setIsFavorite] = useState(false);
-  const [isMoreInfo, setIsMoreInfo] = useState(false);
-  const [imageLoadError, setImageLoadError] = useState(false);
-  const handleImageError = () => setImageLoadError(true);
-
   const {
+    _id,
     name,
     avatar_url,
     experience,
@@ -44,12 +42,20 @@ const PsychoCard = ({ psychologist, openModal, closeModal }) => {
     reviews,
   } = psychologist;
 
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [isMoreInfo, setIsMoreInfo] = useState(false);
+  const [imageLoadError, setImageLoadError] = useState(false);
+  const dispatch = useDispatch();
+
+  const handleImageError = () => setImageLoadError(true);
+
   const toggleFavorite = () => {
-    setIsFavorite(!isFavorite);
+    setIsFavorite(true);
+    dispatch(addFavoritePsychologist(_id));
   };
 
   const handleMoreInfo = () => {
-    setIsMoreInfo(!isMoreInfo);
+    setIsMoreInfo(true);
   };
 
   const handleClick = () => {

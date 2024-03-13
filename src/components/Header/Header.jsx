@@ -38,7 +38,7 @@ const Header = ({ openModal, closeModal }) => {
       register();
       setIsRegisterSubmit(false);
     }
-    if (isRegistered) {
+    if (isRegistered === true) {
       login();
       closeModal(true);
       setUserValue({});
