@@ -3,11 +3,12 @@ import { baseParams, setToken, removeToken } from '../../../baseParams';
 
 const getFavoritePsychologists = createAsyncThunk(
   'psychologists/favorite',
-  async ({ page, limit }, { rejectWithValue, getState }) => {
+  async (_, { rejectWithValue, getState }) => {
     try {
       setToken(getState().auth.token);
       const { data } = await baseParams.get(
-        `/psychologists/favorite?page=${page}&limit=${limit}`
+        // `/psychologists/favorite?page=${page}&limit=${limit}`
+        `/psychologists/favorite`
       );
       return data;
     } catch (error) {

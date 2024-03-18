@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+
 import PsychoCard from './PsychoCard/PsychoCard';
 import { ListStyled } from './PsychoCardList.styled';
 import { useSelector } from 'react-redux';

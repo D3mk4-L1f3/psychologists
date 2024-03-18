@@ -31,7 +31,7 @@ export const slice = createSlice({
         state.isLoading = false;
       })
       .addCase(addFavoritePsychologist.fulfilled, (state, { payload }) => {
-        state.favorite.push(payload.psychologist);
+        state.favorite.unshift(payload.psychologist);
         state.favPending = false;
       })
       .addCase(removeFavoritePsychologist.fulfilled, (state, { payload }) => {
