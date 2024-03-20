@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { signIn, signUp } from '../../redux/auth/operations';
 import {
   selectIsLoading,
+  selectIsLoggedIn,
   selectIsRegistered,
 } from '../../redux/auth/selectors';
 
@@ -21,6 +22,7 @@ const Header = ({ openModal, closeModal }) => {
 
   const dispatch = useDispatch();
   const isRegistered = useSelector(selectIsRegistered);
+  const isLogged = useSelector(selectIsLoggedIn);
   const isLoading = useSelector(selectIsLoading);
 
   const login = () => {
@@ -32,6 +34,13 @@ const Header = ({ openModal, closeModal }) => {
     const { email, password, name } = userValue;
     dispatch(signUp({ email, password, name }));
   };
+
+  useEffect(() => {
+    if (isLogged) {
+      closeModal(true);
+      setUserValue({});
+    }
+  }, [isLogged]);
 
   useEffect(() => {
     if (isRegisterSubmit) {
