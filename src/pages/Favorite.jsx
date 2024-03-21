@@ -9,7 +9,6 @@ const Favorite = () => {
 
   useEffect(() => {
     dispatch(getFavoritePsychologists());
-    console.log('bang');
   }, []);
 
   return <FavoriteCardList />;
