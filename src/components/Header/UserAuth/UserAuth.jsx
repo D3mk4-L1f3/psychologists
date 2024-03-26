@@ -34,7 +34,7 @@ const UserAuth = ({
   return (
     <AuthContainerList>
       <li>
-        <AuthButton type="button" onClick={handleLogin}>
+        <AuthButton type="button" onClick={handleLogin} aria-label="log in">
           Log In
         </AuthButton>
       </li>
@@ -43,6 +43,7 @@ const UserAuth = ({
           style={{ background: 'var(--green)', color: 'var(--white)' }}
           type="button"
           onClick={handleRegister}
+          aria-label="registration"
         >
           Registration
         </AuthButton>
