@@ -39,7 +39,7 @@ const Logout = () => {
         <UserNameWrapper>{name}</UserNameWrapper>
       </li>
       <li>
-        <LogoutButton type="button" onClick={handleLogOut}>
+        <LogoutButton type="button" onClick={handleLogOut} aria-label="Logout">
           Log out
         </LogoutButton>
       </li>
