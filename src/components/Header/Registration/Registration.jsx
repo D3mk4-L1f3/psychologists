@@ -84,7 +84,11 @@ const Registration = ({ closeModal, setUserData, registerSub }) => {
                 ) : null}
               </InputWrapper>
 
-              <RegisterButton type="submit" disabled={isSubmitting}>
+              <RegisterButton
+                type="submit"
+                disabled={isSubmitting}
+                aria-label="sign up"
+              >
                 Sign Up
               </RegisterButton>
             </FormStyled>

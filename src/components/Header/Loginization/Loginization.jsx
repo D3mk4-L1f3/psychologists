@@ -75,7 +75,11 @@ const Loginization = ({ closeModal, setUserData, loginSub }) => {
                   <ErrorMsg>{errors.password}</ErrorMsg>
                 ) : null}
               </InputWrapper>
-              <LoginButton type="submit" disabled={isSubmitting}>
+              <LoginButton
+                type="submit"
+                disabled={isSubmitting}
+                aria-label="login"
+              >
                 Submit
               </LoginButton>
             </FormStyled>
