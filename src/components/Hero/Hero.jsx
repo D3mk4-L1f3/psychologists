@@ -35,7 +35,7 @@ const Hero = () => {
             guide in your own life with the help of our experienced
             psychologists.
           </p>
-          <GetStartedActin as={Link} to="/psychologists">
+          <GetStartedActin as={Link} to="/psychologists" aria-label='Lets select psychologists'>
             <ButtonItemContainer>
               <p>Get started</p>
               <svg>
