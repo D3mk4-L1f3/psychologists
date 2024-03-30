@@ -35,7 +35,7 @@ const MoreInfo = ({ reviews, handleClick }) => {
           </ReviewItem>
         ))}
       </ReviewsList>
-      <AppointBtn type="button" onClick={handleClick}>
+      <AppointBtn type="button" onClick={handleClick} aria-label='Make an appointment'>
         Make an appointment
       </AppointBtn>
     </>
