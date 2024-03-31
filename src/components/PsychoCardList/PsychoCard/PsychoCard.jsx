@@ -89,7 +89,11 @@ const PsychoCard = ({ psychologist, openModal, closeModal }) => {
               <RatingPriceTextSpan> {price_per_hour}$</RatingPriceTextSpan>{' '}
             </RatingPriceText>
           </RatingPriceBlock>
-          <SvgHeart $isFavorite={isFavorite} onClick={toggleFavorite}>
+          <SvgHeart
+            $isFavorite={isFavorite}
+            onClick={toggleFavorite}
+            aria-label="add to favorite"
+          >
             <use href={`${sprite}#heart`}></use>
           </SvgHeart>
         </HeadDescriptionWrap>
