@@ -123,7 +123,11 @@ const PsychoCard = ({ psychologist, openModal, closeModal }) => {
         </SkillsBlock>
         <DescriptionText>{about}</DescriptionText>
         {!isMoreInfo && (
-          <ReadMoreButton type="button" onClick={handleMoreInfo}>
+          <ReadMoreButton
+            type="button"
+            onClick={handleMoreInfo}
+            aria-label="read more"
+          >
             Read more
           </ReadMoreButton>
         )}
