@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import {
   AvatarContainer,
@@ -18,7 +19,7 @@ import {
   SvgStar,
 } from './PsychoCard.styled';
 import sprite from '../../../styles/sprite.svg';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import MoreInfo from './MoreInfo/MoreInfo';
 import LazyLoad from 'react-lazy-load';
 import PsyForm from '../../PsyForm/PsyForm';
@@ -27,7 +28,12 @@ import retina from '../../../styles/image/defaultImg/default@2x.webp';
 import { useDispatch } from 'react-redux';
 import { addFavoritePsychologist } from '../../../redux/psychologists/operations';
 
-const PsychoCard = ({ psychologist, openModal, closeModal }) => {
+const PsychoCard = ({
+  psychologist,
+  openModal,
+  closeModal,
+  addedToFavorite,
+}) => {
   const {
     _id,
     name,
@@ -46,6 +52,13 @@ const PsychoCard = ({ psychologist, openModal, closeModal }) => {
   const [isMoreInfo, setIsMoreInfo] = useState(false);
   const [imageLoadError, setImageLoadError] = useState(false);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (addedToFavorite) {
+      const isPsychologistFavorite = addedToFavorite?.includes(_id);
+      setIsFavorite(isPsychologistFavorite);
+    }
+  }, [addedToFavorite, _id]);
 
   const handleImageError = () => setImageLoadError(true);
 
