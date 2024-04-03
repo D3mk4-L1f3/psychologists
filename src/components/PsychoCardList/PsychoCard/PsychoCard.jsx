@@ -51,20 +51,29 @@ const PsychoCard = ({
   const [isFavorite, setIsFavorite] = useState(false);
   const [isMoreInfo, setIsMoreInfo] = useState(false);
   const [imageLoadError, setImageLoadError] = useState(false);
+  // const [isAdded, setIsAdded] = useState(addedToFavorite || []);
   const dispatch = useDispatch();
+  // const addedByUser = isAdded?.includes(_id);
+
+  // console.log(_id);
 
   useEffect(() => {
     if (addedToFavorite) {
       const isPsychologistFavorite = addedToFavorite?.includes(_id);
-      setIsFavorite(isPsychologistFavorite);
+      const alreadyAdded = isPsychologistFavorite === true;
+      setIsFavorite(alreadyAdded);
     }
-  }, [addedToFavorite, _id]);
+  }, [addedToFavorite]);
 
   const handleImageError = () => setImageLoadError(true);
 
   const toggleFavorite = () => {
-    setIsFavorite(true);
-    dispatch(addFavoritePsychologist(_id));
+    setIsFavorite(!isFavorite);
+    // if (!addedByUser) {
+    //   setIsAdded(prevIds => [...prevIds, _id]);
+    // }
+    // dispatch(addFavoritePsychologist(_id));
+    console.log('oups!');
   };
 
   const handleMoreInfo = () => {
