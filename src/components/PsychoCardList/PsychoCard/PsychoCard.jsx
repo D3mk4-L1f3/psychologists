@@ -55,7 +55,6 @@ const PsychoCard = ({
   const dispatch = useDispatch();
   // const addedByUser = isAdded?.includes(_id);
 
-  // console.log(_id);
 
   useEffect(() => {
     if (addedToFavorite) {
@@ -69,9 +68,6 @@ const PsychoCard = ({
 
   const toggleFavorite = () => {
     setIsFavorite(!isFavorite);
-    // if (!addedByUser) {
-    //   setIsAdded(prevIds => [...prevIds, _id]);
-    // }
     // dispatch(addFavoritePsychologist(_id));
     console.log('oups!');
   };
