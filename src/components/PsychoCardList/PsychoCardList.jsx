@@ -18,7 +18,7 @@ const PsychoCardList = ({ openModal, closeModal }) => {
   const checkFavorite = !!psychologists && emptyFavorite;
   const dispatch = useDispatch();
 
-  // Приклад як витягнути готові картки для доданих у улюблене психологів
+  // Приклад як витягнути готові картки для доданих у улюблене психологів щоб не робити окремий запит з картками
   // const favoriteList = psychologists?.filter(psychologist =>
   //   favoritePsychologists.includes(psychologist._id)
   // );
