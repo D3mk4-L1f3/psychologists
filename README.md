@@ -1,2 +1,2 @@
 download, npm i and go)
-The application about psychologists 
+The application for psychologists client
